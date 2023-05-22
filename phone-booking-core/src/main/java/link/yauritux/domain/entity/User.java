@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 /**
  * @author Yauri Attamimi (yauritux@gmail.com)
  * @version 1.0
+ *
+ * Represents a User business entity.
  */
 @NoArgsConstructor
 @AllArgsConstructor
