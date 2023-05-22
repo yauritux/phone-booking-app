@@ -1,9 +1,7 @@
 package link.yauritux.domain.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
@@ -13,8 +11,6 @@ import java.time.LocalDateTime;
  *
  * Represents a phone booking line entry, i.e. phone's that is booked by a user.
  */
-@NoArgsConstructor
-@AllArgsConstructor
 @Data
 @Builder
 public class BookingEntry {
