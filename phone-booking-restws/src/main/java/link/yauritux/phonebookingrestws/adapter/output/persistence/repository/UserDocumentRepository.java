@@ -1,4 +1,4 @@
-package link.yauritux.restfulapi.adapter.output.persistence.repository;
+package link.yauritux.phonebookingrestws.adapter.output.persistence.repository;
 
 import link.yauritux.phonebookingrestws.adapter.output.persistence.document.UserDocument;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;

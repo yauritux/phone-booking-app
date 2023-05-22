@@ -3,7 +3,6 @@ package link.yauritux.phonebookingrestws.adapter.output.persistence.repository;
 import link.yauritux.domain.entity.User;
 import link.yauritux.phonebookingrestws.adapter.output.persistence.mapper.UserDocumentEntityMapper;
 import link.yauritux.port.output.repository.UserRepositoryPort;
-import link.yauritux.restfulapi.adapter.output.persistence.repository.UserDocumentRepository;
 import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Mono;
 
