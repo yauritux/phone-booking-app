@@ -21,6 +21,8 @@ So essentially by having this kind of **Hexagonal architecture**, we can protect
 regardless of its application interface or any infrastructure layer such as database, framework, etc that we're going to embrace.
 As what we've done here Here as an example by providing a **RESTful API** as one of its application layer to interact with our user/client.
 
+![Code Architecture](./codearch.png)
+
 ## Prerequisites
 
 - Java 17
