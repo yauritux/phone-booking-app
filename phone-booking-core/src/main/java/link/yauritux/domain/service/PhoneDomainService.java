@@ -15,6 +15,9 @@ import reactor.core.scheduler.Schedulers;
 /**
  * @author Yauri Attamimi (yauritux@gmail.com)
  * @version 1.0
+ *
+ * Phone core domain service that contains all necessary business logic specific to a Phone
+ * such as: registering a phone, searching for a phone, update phone data etc.
  */
 @RequiredArgsConstructor
 public class PhoneDomainService implements PhoneServicePort {

@@ -19,6 +19,8 @@ import java.time.LocalDateTime;
 /**
  * @author Yauri Attamimi (yauritux@gmail.com)
  * @version 1.0
+ *
+ * Booking entry core domain service that contains all necessary business logic specific to booking a phone transaction.
  */
 @RequiredArgsConstructor
 public class BookingEntryDomainService implements BookingEntryServicePort {
