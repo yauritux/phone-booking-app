@@ -1,10 +1,15 @@
 package link.yauritux.phonebookingrestws.adapter.output.persistence.repository;
 
 import link.yauritux.phonebookingrestws.adapter.output.persistence.document.UserDocument;
+import link.yauritux.phonebookingrestws.config.TestConfig;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
+import org.springframework.data.mongodb.repository.config.EnableReactiveMongoRepositories;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.MongoDBContainer;
@@ -17,6 +22,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DataMongoTest
 @Testcontainers
+@ContextConfiguration(classes = TestConfig.class)
+@EnableAutoConfiguration
+@EnableReactiveMongoRepositories
+@ActiveProfiles("test")
 class UserDocumentRepositoryTest {
 
     @Autowired
