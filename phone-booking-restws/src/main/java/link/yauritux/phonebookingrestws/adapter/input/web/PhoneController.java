@@ -2,6 +2,8 @@ package link.yauritux.phonebookingrestws.adapter.input.web;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import link.yauritux.phonebookingrestws.usecase.BookingPhoneService;
+import link.yauritux.phonebookingrestws.usecase.PhoneService;
+import link.yauritux.phonebookingrestws.usecase.dto.PhoneSummaryResponse;
 import link.yauritux.port.input.dto.request.BookingEntryRequest;
 import link.yauritux.port.input.dto.request.PhoneRegistrationRequest;
 import link.yauritux.port.input.dto.response.BookingEntryResponse;
@@ -27,6 +29,8 @@ public class PhoneController {
 
     private final BookingPhoneService bookingPhoneService;
 
+    private final PhoneService phoneService;
+
     @PostMapping
     public Mono<ResponseEntity<PhoneRegistrationResponse>> registerPhone(@RequestBody PhoneRegistrationRequest request) {
         return phoneServicePort.registerPhone(request)
@@ -49,5 +53,13 @@ public class PhoneController {
                 ResponseEntity.status(HttpStatus.ACCEPTED).body(r)
         ).onErrorResume(e -> Mono.just(ResponseEntity.status(HttpStatus.BAD_REQUEST)
                 .body(BookingEntryResponse.builder().errorMessage(e.getMessage()).build())));
+    }
+
+    @GetMapping("/{phoneId}")
+    public Mono<ResponseEntity<PhoneSummaryResponse>> getPhoneDetails(@PathVariable String phoneId) {
+        return phoneService.getPhoneDetailsInformation(phoneId)
+                .map(r -> ResponseEntity.status(HttpStatus.OK).body(r))
+                .onErrorResume(e -> Mono.just(ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                        .body(PhoneSummaryResponse.builder().errorMessage(e.getMessage()).build())));
     }
 }
