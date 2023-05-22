@@ -2,7 +2,8 @@ package link.yauritux.port.input.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import link.yauritux.domain.entity.BookingEntry;
-import lombok.*;
+import lombok.Builder;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 
@@ -13,8 +14,6 @@ import java.time.LocalDateTime;
  * A response object type returned by the booking entry service.
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@NoArgsConstructor
-@AllArgsConstructor
 @Data
 @Builder
 public class BookingEntryResponse {
