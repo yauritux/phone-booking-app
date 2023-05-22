@@ -13,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 /**
@@ -61,5 +62,11 @@ public class PhoneController {
                 .map(r -> ResponseEntity.status(HttpStatus.OK).body(r))
                 .onErrorResume(e -> Mono.just(ResponseEntity.status(HttpStatus.BAD_REQUEST)
                         .body(PhoneSummaryResponse.builder().errorMessage(e.getMessage()).build())));
+    }
+
+    @GetMapping
+    public Flux<PhoneSummaryResponse> fetchAllPhones(
+            @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int limit) {
+        return phoneService.fetchAllPhones(page, limit);
     }
 }

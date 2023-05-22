@@ -3,6 +3,7 @@ package link.yauritux.port.input.service;
 import link.yauritux.domain.entity.Phone;
 import link.yauritux.port.input.dto.request.PhoneRegistrationRequest;
 import link.yauritux.port.input.dto.response.PhoneRegistrationResponse;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 /**
@@ -40,4 +41,13 @@ public interface PhoneServicePort {
      * @return
      */
     Mono<Phone> updatePhoneAvailability(String id, boolean available);
+
+    /**
+     * Fetch all registered phones based on given page number and number of record per-page.
+     *
+     * @param page represents page number
+     * @param limit number of records to be displayed per-page.
+     * @return
+     */
+    Flux<Phone> fetchAllPhones(int page, int limit);
 }

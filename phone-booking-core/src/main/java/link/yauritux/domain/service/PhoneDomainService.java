@@ -9,6 +9,7 @@ import link.yauritux.port.input.service.PhoneServicePort;
 import link.yauritux.port.output.repository.PhoneRepositoryPort;
 import link.yauritux.port.output.repository.PhoneSpecRepositoryPort;
 import lombok.RequiredArgsConstructor;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
 
@@ -62,6 +63,11 @@ public class PhoneDomainService implements PhoneServicePort {
                 }).switchIfEmpty(Mono.error(new PhoneNotFoundException(
                         String.format("Cannot find phone with id %s!", id)
                 )));
+    }
+
+    @Override
+    public Flux<Phone> fetchAllPhones(int page, int limit) {
+        return phoneRepositoryPort.findAll(page, limit);
     }
 
     private Mono<PhoneRegistrationResponse> persistPhone(Phone phone) {

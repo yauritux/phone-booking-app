@@ -1,6 +1,7 @@
 package link.yauritux.port.output.repository;
 
 import link.yauritux.domain.entity.Phone;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 /**
@@ -36,4 +37,13 @@ public interface PhoneRepositoryPort {
      * @return Phone
      */
     Mono<Phone> update(Phone phone);
+
+    /**
+     * Fetch all registered phones based on the given page number and number of records per-page.
+     *
+     * @param page represents page number. Number starts with 0 for page 1, 1 for page 2 and so forth.
+     * @param limit number of records to be displayed per-page.
+     * @return
+     */
+    Flux<Phone> findAll(int page, int limit);
 }

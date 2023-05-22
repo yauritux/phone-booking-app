@@ -4,6 +4,8 @@ import link.yauritux.domain.entity.Phone;
 import link.yauritux.phonebookingrestws.adapter.output.persistence.mapper.PhoneDocumentEntityMapper;
 import link.yauritux.port.output.repository.PhoneRepositoryPort;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 /**
@@ -34,5 +36,11 @@ public class PhoneRepository implements PhoneRepositoryPort {
     @Override
     public Mono<Phone> update(Phone phone) {
         return null;
+    }
+
+    @Override
+    public Flux<Phone> findAll(int page, int limit) {
+        return phoneDocumentRepository.findAllBy(PageRequest.of(page, limit))
+                .map(PhoneDocumentEntityMapper.INSTANCE::documentToEntity);
     }
 }
