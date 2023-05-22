@@ -9,6 +9,9 @@ import reactor.core.publisher.Mono;
 /**
  * @author Yauri Attamimi (yauritux@gmail.com)
  * @version 1.0
+ *
+ * An adapter class used to perform any CRUD operation against our mongo database after some processes completed
+ * by the phone domain service in the core domain layer.
  */
 @RequiredArgsConstructor
 public class PhoneRepository implements PhoneRepositoryPort {
