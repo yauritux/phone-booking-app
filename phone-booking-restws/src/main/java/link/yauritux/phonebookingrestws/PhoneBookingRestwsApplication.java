@@ -47,7 +47,7 @@ public class PhoneBookingRestwsApplication {
     }
 
     /**
-     * You shouldn't use this kind of post-construct in production !!!
+     * Please think again about using this kind of post-construct in production!!!
      * This is used for development only
      */
     @PostConstruct
