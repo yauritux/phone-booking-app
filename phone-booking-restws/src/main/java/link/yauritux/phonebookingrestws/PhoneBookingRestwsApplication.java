@@ -46,7 +46,7 @@ public class PhoneBookingRestwsApplication {
         SpringApplication.run(PhoneBookingRestwsApplication.class, args);
     }
 
-    /**
+    /*
      * Please think again about using this kind of post-construct in production!!!
      * This is used for development only
      */
