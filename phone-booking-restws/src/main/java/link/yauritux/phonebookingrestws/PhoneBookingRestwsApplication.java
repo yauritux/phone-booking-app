@@ -5,6 +5,7 @@ import io.swagger.v3.oas.annotations.info.Contact;
 import io.swagger.v3.oas.annotations.info.Info;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.mongodb.repository.config.EnableReactiveMongoRepositories;
 import org.springframework.web.reactive.config.EnableWebFlux;
 
 /**
@@ -18,6 +19,7 @@ import org.springframework.web.reactive.config.EnableWebFlux;
         version = "1.0",
         description = "PhoneBooking API Documentations v1.0",
         contact = @Contact(name = "Yauri Attamimi", email = "yauritux@gmail.com")))
+@EnableReactiveMongoRepositories
 public class PhoneBookingRestwsApplication {
 
     public static void main(String[] args) {
