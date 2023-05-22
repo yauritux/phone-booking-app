@@ -5,6 +5,7 @@ import io.swagger.v3.oas.annotations.info.Contact;
 import io.swagger.v3.oas.annotations.info.Info;
 import jakarta.annotation.PostConstruct;
 import link.yauritux.phonebookingrestws.adapter.output.persistence.document.PhoneDocument;
+import link.yauritux.phonebookingrestws.adapter.output.persistence.repository.BookingEntryDocumentRepository;
 import link.yauritux.phonebookingrestws.adapter.output.persistence.repository.PhoneDocumentRepository;
 import link.yauritux.port.output.repository.PhoneSpecRepositoryPort;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,12 +39,21 @@ public class PhoneBookingRestwsApplication {
     @Autowired
     private PhoneDocumentRepository phoneDocumentRepository;
 
+    @Autowired
+    private BookingEntryDocumentRepository bookingEntryDocumentRepository;
+
     public static void main(String[] args) {
         SpringApplication.run(PhoneBookingRestwsApplication.class, args);
     }
 
+    /**
+     * You shouldn't use this kind of post-construct in production !!!
+     * This is used for development only
+     */
     @PostConstruct
     public void init() {
+        bookingEntryDocumentRepository.deleteAll().subscribe();
+
         phoneDocumentRepository.deleteAll().subscribe();
 
         Flux<String> brands = Flux.fromIterable(List.of("Samsung", "Samsung", "Motorola", "Oneplus", "Apple",
