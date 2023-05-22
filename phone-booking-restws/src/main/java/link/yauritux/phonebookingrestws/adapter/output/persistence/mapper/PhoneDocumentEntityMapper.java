@@ -45,7 +45,7 @@ public class PhoneDocumentEntityMapper {
      * @param phoneDocument a phone document that represents a phone collection in mongo database.
      * @return Phone
      */
-    public Phone phoneDocumentToPhoneEntity(PhoneDocument phoneDocument) {
+    public Phone documentToEntity(PhoneDocument phoneDocument) {
         return Phone.builder()
                 .id(phoneDocument.getId())
                 .brand(phoneDocument.getBrand())
