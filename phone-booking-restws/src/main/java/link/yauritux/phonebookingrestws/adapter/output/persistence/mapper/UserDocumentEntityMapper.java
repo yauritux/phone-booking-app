@@ -20,7 +20,7 @@ public class UserDocumentEntityMapper {
 
     /**
      * Convert user entity to its corresponding user document collection in mongo.
-     * This is used as a necessary step before saving a user record into as collection in our mongo database.
+     * This is used as a necessary step before saving a user record as a collection in our mongo database.
      *
      * @param user a user entity as defined within the core domain
      * @return UserDocument
