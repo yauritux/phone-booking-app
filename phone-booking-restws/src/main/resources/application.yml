@@ -10,6 +10,11 @@ spring:
       uri: ${MONGO_DB_URI}
       authentication-database: admin
 
+fonoapi:
+  url: ${FONOAPI_URL}
+  token: ${FONOAPI_TOKEN}
+  timeout: ${FONOAPI_TIMEOUT_MS}
+
 logging:
   level:
     org.springframework.security: DEBUG
