@@ -7,6 +7,7 @@ import link.yauritux.port.input.dto.response.UserRegistrationResponse;
 import link.yauritux.port.input.service.UserServicePort;
 import link.yauritux.port.output.repository.UserRepositoryPort;
 import lombok.RequiredArgsConstructor;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 /**
@@ -39,5 +40,10 @@ public class UserDomainService implements UserServicePort {
     @Override
     public Mono<User> findById(String id) {
         return userRepositoryPort.findById(id);
+    }
+
+    @Override
+    public Flux<User> fetchAllUsers(int page, int limit) {
+        return userRepositoryPort.findAll(page, limit);
     }
 }

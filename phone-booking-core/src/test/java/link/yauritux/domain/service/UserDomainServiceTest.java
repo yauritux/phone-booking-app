@@ -8,9 +8,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
+import java.util.List;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -83,5 +85,17 @@ class UserDomainServiceTest {
         when(userRepositoryPort.findById(id)).thenReturn(user);
 
         StepVerifier.create(sut.findById(id)).expectNextCount(1).verifyComplete();
+    }
+
+    @Test
+    void findAll() {
+        var records = Flux.fromIterable(List.of(
+                User.builder().id(UUID.randomUUID().toString()).name("yauritux").build(),
+                User.builder().id(UUID.randomUUID().toString()).name("igneel").build()
+        ));
+        when(userRepositoryPort.findAll(0, 10)).thenReturn(records);
+
+        StepVerifier.create(sut.fetchAllUsers(0, 10))
+                .expectNextCount(2).verifyComplete();
     }
 }

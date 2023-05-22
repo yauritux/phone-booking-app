@@ -3,6 +3,7 @@ package link.yauritux.port.input.service;
 import link.yauritux.domain.entity.User;
 import link.yauritux.port.input.dto.request.UserRegistrationRequest;
 import link.yauritux.port.input.dto.response.UserRegistrationResponse;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 /**
@@ -28,4 +29,6 @@ public interface UserServicePort {
      * @return User
      */
     Mono<User> findById(String id);
+
+    Flux<User> fetchAllUsers(int page, int limit);
 }

@@ -8,10 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 /**
@@ -33,5 +31,12 @@ public class UserController {
                 .map(r -> ResponseEntity.status(HttpStatus.CREATED).body(r))
                 .onErrorResume(e -> Mono.just(ResponseEntity.status(HttpStatus.BAD_REQUEST)
                         .body(new UserRegistrationResponse(null, null, e.getMessage()))));
+    }
+
+    @GetMapping
+    public Flux<UserRegistrationResponse> fetchAllUsers(
+            @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int limit) {
+        return userServicePort.fetchAllUsers(page, limit)
+                .map(r -> new UserRegistrationResponse(r.getId(), r.getName()));
     }
 }

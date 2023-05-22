@@ -4,6 +4,8 @@ import link.yauritux.domain.entity.User;
 import link.yauritux.phonebookingrestws.adapter.output.persistence.mapper.UserDocumentEntityMapper;
 import link.yauritux.port.output.repository.UserRepositoryPort;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 /**
@@ -28,5 +30,12 @@ public class UserRepository implements UserRepositoryPort {
     @Override
     public Mono<User> findById(String id) {
         return userDocumentRepository.findById(id).map(UserDocumentEntityMapper.INSTANCE::documentToEntity);
+    }
+
+    @Override
+    public Flux<User> findAll(int page, int limit) {
+        return userDocumentRepository.findAllBy(
+                PageRequest.of(page, limit)
+        ).map(UserDocumentEntityMapper.INSTANCE::documentToEntity);
     }
 }
