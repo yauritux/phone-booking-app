@@ -48,3 +48,8 @@ FONOAPI_TOKEN=77safdsf#1$# \
 FONOAPI_TIMEOUT_MS=9500 \
 java -jar `./phone-booking-restws/target/phone-booking-restws-1.0.jar`
 ```
+
+### TODO
+
+1. adding more integration tests 
+2. create a Dockerfile and encapsulate **phone-booking-app** service within the `docker-compose.yml`
