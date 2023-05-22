@@ -2,10 +2,7 @@ package link.yauritux.phonebookingrestws.config;
 
 import link.yauritux.domain.service.PhoneDomainService;
 import link.yauritux.domain.service.UserDomainService;
-import link.yauritux.phonebookingrestws.adapter.output.persistence.repository.PhoneDocumentRepository;
-import link.yauritux.phonebookingrestws.adapter.output.persistence.repository.PhoneRepository;
-import link.yauritux.phonebookingrestws.adapter.output.persistence.repository.UserDocumentRepository;
-import link.yauritux.phonebookingrestws.adapter.output.persistence.repository.UserRepository;
+import link.yauritux.phonebookingrestws.adapter.output.persistence.repository.*;
 import link.yauritux.phonebookingrestws.adapter.output.webclient.FonoApiClient;
 import link.yauritux.port.input.service.PhoneServicePort;
 import link.yauritux.port.input.service.UserServicePort;
@@ -25,6 +22,8 @@ public class ApplicationConfig {
 
     private final PhoneDocumentRepository phoneDocumentRepository;
 
+    private final BookingEntryDocumentRepository bookingEntryDocumentRepository;
+
     private final FonoApiClient fonoApiClient;
 
     @Bean
@@ -42,4 +41,7 @@ public class ApplicationConfig {
 
     @Bean
     PhoneServicePort phoneServicePort() { return new PhoneDomainService(phoneRepository(), fonoApiClient); }
+
+    @Bean
+    BookingEntryRepository bookingEntryRepository() { return new BookingEntryRepository(bookingEntryDocumentRepository); }
 }
