@@ -4,15 +4,22 @@ services:
     image: mongo
     container_name: mongo
     hostname: mongo
-    networks:
-      - tuxnetwork
     ports:
       - 27017:27017
     environment:
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=tux123
       - MONGO_INITDB_DATABASE=phonebooking
-
-networks:
-  tuxnetwork:
-    driver: bridge
+  phonebookingapp:
+    build: .
+    container_name: phonebookingapp
+    depends_on:
+      - mongo
+    ports:
+      - 9000:9000
+    environment:
+      - MONGO_DB_URI=mongodb://root:tux123@mongo:27017/phonebooking?authSource=admin
+      - FONOAPI_URL=https://fonoapi.freshpixl.com/v1/
+      - FONOAPI_TOKEN=clhzsnfce000008l7aizx11hw
+      - FONOAPI_TIMEOUT_MS=9500
+      - SERVER_PORT=9000

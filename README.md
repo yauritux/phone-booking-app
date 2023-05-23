@@ -29,7 +29,14 @@ As what we've done here Here as an example by providing a **RESTful API** as one
 - Maven 3+
 - Docker
 
-## Running the App
+## Running using Docker
+
+`cd`-ing into the folder that contains `docker-compose.yml` file then execute this following command:
+```shell
+docker-compose up
+```
+
+## Running with Maven (without Docker)
 
 1. Compile the project by executing this following command from the project base directory:
 ```shell
@@ -51,5 +58,4 @@ java -jar `./phone-booking-restws/target/phone-booking-restws-1.0.jar`
 
 ### TODO
 
-1. adding more integration tests 
-2. create a Dockerfile and encapsulate **phone-booking-app** service within the `docker-compose.yml`
+1. adding more integration tests
